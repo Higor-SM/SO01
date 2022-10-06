@@ -68,8 +68,13 @@ E essas entradas vão possuir as entradas dos endereços de cada tabela pertecen
 Um processo ele pode ser
 CPU-bound e pode ser I/O-bound 
 o CPU-bound é um processo que utiliza mais CPU que um dispositivo de entrada e saída
-por outro lado o processo I/O-bound são processos que utilizam mais operações de entrada e saída doque a propria CPU.
+exemplo: O reconhecimento de imagem, que é o método usado pela Inteligência Artificial (IA) para “ver” conteúdos
+por outro lado
+o processo I/O-bound são processos que utilizam mais operações de entrada e saída doque a propria CPU. 
+exemplo: copiar e mover arquivos, tipo transferencia de arquivos de um pendrive 
+Um processo é considerado I/O-Bound quando passa a maior parte do tempo no estado de espera, pois realiza um elevado número de operações de E/S
 O ideal seria existir um balanceamento entre processos CPU bound e IO bound
+
 
 # Criação de Processos e quais são as formas de criar um processo?
 
@@ -102,7 +107,7 @@ TerminateProcess(Windows)
 
 Executando: realmente usando a CPU naquele momento
 Bloqueado: executando alguma operação de entrada e saída por exemplo
-Pronto: Ele possuí tudo menos a CPU
+Pronto: ele possuí tudo menos a CPU
 
 # O processo em execução pode ir para o estado de bloqueado se ele fizer alguma chamada de sistema ou alguma requisição de entrada e saída.
 

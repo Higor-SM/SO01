@@ -160,7 +160,7 @@ As fixas são as que já são fixadas no ínicio do boot do sistema enquanto que
 
 Ou seja, as partições são criadas durante a execução dos processos.
 
-![](https://github.com/Higor-SM/SO01/tree/main/gerenciamento_de_memória/exemplo_de_partições_variáveis.png)
+![.](https://github.com/Higor-SM/SO01/blob/main/gerenciamento_de_memória/exemplo%20de%20partições%20variáveis.png)
 
 Nesse exemplo da imagem que eu mandei para vc professor nós temos um exemplo de partições variáveis.
 
@@ -190,7 +190,7 @@ Mapa de bits
 
 Como vc pode ver na segunda imagem que eu mandei
 
-![]()
+![.](https://github.com/Higor-SM/SO01/blob/main/gerenciamento_de_memória/mapa%20de%20bits.png)
 
 Então temos por exemplo 4KB, e esses 4KB são colocados como 1 caso ela esteja ocupada, nesse cenário da imagem o processo A ocupou 5 blocos e esses 3 blocos que se encontram livres é deixado como 0 uma vez que ele não se encontra ocupado, e assim por diante.
 
@@ -216,7 +216,7 @@ A melhor escolha seria escolher a área que mais se encaixa para o processo, ela
 
 A pior escolha é o inverso 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b5e7e5c-0220-470a-bef5-ec96a90183ae/Untitled.png)
+![.](https://github.com/Higor-SM/SO01/blob/main/gerenciamento_de_memória/conjunto%20de%20partições%20com%20processo%2014%20kb.png)
 
 Nesse cenário da imagem nós temos o conjunto de partições e tem um processo de 14 kb, que quer entrar na memória principal, e o melhor lugar seria o de 16 bytes e como ele tem 14 vai sobrar um espaço de 2 bytes livres
 

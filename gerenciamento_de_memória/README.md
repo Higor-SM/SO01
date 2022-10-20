@@ -160,7 +160,7 @@ As fixas são as que já são fixadas no ínicio do boot do sistema enquanto que
 
 Ou seja, as partições são criadas durante a execução dos processos.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4e25969-75af-4a87-ba63-8d139e1644a7/Untitled.png)
+![](https://github.com/Higor-SM/SO01/tree/main/gerenciamento_de_memória/exemplo_de_partições_variáveis.png)
 
 Nesse exemplo da imagem que eu mandei para vc professor nós temos um exemplo de partições variáveis.
 
@@ -190,7 +190,7 @@ Mapa de bits
 
 Como vc pode ver na segunda imagem que eu mandei
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57735117-3637-497f-9be6-013253a61894/Untitled.png)
+![]()
 
 Então temos por exemplo 4KB, e esses 4KB são colocados como 1 caso ela esteja ocupada, nesse cenário da imagem o processo A ocupou 5 blocos e esses 3 blocos que se encontram livres é deixado como 0 uma vez que ele não se encontra ocupado, e assim por diante.
 

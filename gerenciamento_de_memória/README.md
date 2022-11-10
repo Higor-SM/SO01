@@ -6,20 +6,6 @@ Existem várias formas de gerenciar, existem formas mono-programadas aonde exist
 
 Então existem várias formas de gerenciar memória, existem várias formas de quebrar memória e dar um pedaço de memória para cada processo.
 
-Normalmente os programadores querem um mundo ideal:
-
-Seria um computador que teria uma memória grande o suficiente, uma memória que seja rápida o suficiente, ou seja, uma memória que me dê a resposta o quanto antes do acesso que foi solicitado
-
-Também uma memória que não seja volátil, uma memória que quando eu desligar o computador, as informações contidas nessa memória não podem desaparecer até que eu instrua a sua exclusão.
-
-E também eles desejam uma memória que seja de baixo custo.
-
-Então essa seria a tecnologia dos sonhos dos programadores, para que eles possam criar suas aplicações.
-
-Porém infelizmente esse contexto não existe.
-
-E os programadores necessitam precisam se adequar a realidade, memória lenta, pequena, volátil e custo...
-
 Hierarquia de Memória
 
 O sistema de computação possui diversos tipos de memórias.
@@ -162,7 +148,7 @@ Ou seja, as partições são criadas durante a execução dos processos.
 
 ![.](https://github.com/Higor-SM/SO01/blob/main/gerenciamento_de_memória/exemplo%20de%20partições%20variáveis.png)
 
-Nesse exemplo da imagem que eu mandei para vc professor nós temos um exemplo de partições variáveis.
+Nesse exemplo nós temos um exemplo de partições variáveis.
 
 Nós temos uma memória totalmente vazia que consiste apenas do sistema operacional, chegou o processo A ele é carregado na base da memória, chegou o processo B, o C e ele vai carregando.
 
@@ -208,7 +194,7 @@ E assim por diante até ele chegar no final da memória principal.
 
 Algoritmos de Alocação
 
-Por favor abre a 3 imagem professor.
+//abre a 3 imagem//
 
 Existem 3 formas de alocar uma área livre para um processo
 

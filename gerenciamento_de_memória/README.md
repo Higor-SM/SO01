@@ -227,13 +227,18 @@ aos requisitos reduzidos dos processos.
 Ocorre quando existe espaço suficiente de memória livre para satisfazer uma
 requisição, porém não é continuo e portanto não pode ser utilizado. 
 
-frag int - parte da memoria que não é usada por conta dos requisitos redusidos do processo
+frag int -
+
+ocorre quando o tamanho do processo é menor que a área alocada, uma lacuna com 6kb aloca um processo de 5kb, causando desperdicio de memória.
+
 numa mem seg ela ocorre quando um arquivo ou fragmento de arquivo não ocupa completamente o espaço da unidade de alocação destinado a ele, causando desperdício de espaço
 na mem prin, o esquema de particionamento pode ser dinâmico ou fixo, no particionamento dinâmico, cada processo submetido à execução recebe o tamanho necessário para se comportar por completo na memória. Assim, a memória principal é subdividida em segmentos de tamanho variado. No particionamento fixo, a memória é subdividida em
 blocos de tamanho fixo (iguais ou não) chamados em páginas, blocos ou frames.
 
 
-frag ext - acontece quando existe espaço de memoria, livre, o suficiente para satisfazer uma requisição, porém não é contínuo e por isso não pode ser utilizado. Este tipo de fragmentação começa a acontecer quando os programas forem terminando e deixando espaços cada vez menores na memória, não permitindo o ingresso de novos programas
+frag ext -
+
+ocorre quando um processo precisa de um espaço, por exemplo 5kb, porém esse espaço só existe em duas lacunas, uma de 3kb e outra de 2kb, em lugares separados. Este tipo de fragmentação começa a acontecer quando os programas forem terminando e deixando espaços cada vez menores na memória, não permitindo o ingresso de novos programas
 
 algoritimos de alocação: 
 3 maneiras para alocar uma area livre para um processo

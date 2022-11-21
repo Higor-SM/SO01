@@ -209,3 +209,39 @@ Nesse cenário da imagem nós temos o conjunto de partições e tem um processo 
 O pior seria esse de 32 kb, ai vai sobrar 18 kb.
 
 E a primeira escolha seria a alocação onde o processo é alocado no primeiro que couber.
+
+
+
+
+
+Fragmentação de Memória
+¤ A gestão de memória mediante partições fixas
+provoca o aparecimento de áreas de memória não
+utilizadas.
+¤ Este efeito se denomina fragmentação da memória e
+pode ser de dois tipos:
+- Fragmentação interna
+Porção de memória de uma determinada partição que não é utilizada devido
+aos requisitos reduzidos dos processos.
+- Fragmentação externa
+Ocorre quando existe espaço suficiente de memória livre para satisfazer uma
+requisição, porém não é continuo e portanto não pode ser utilizado. 
+
+frag int - parte da memoria que não é usada por conta dos requisitos redusidos do processo
+numa mem seg ela ocorre quando um arquivo ou fragmento de arquivo não ocupa completamente o espaço da unidade de alocação destinado a ele, causando desperdício de espaço
+na mem prin, o esquema de particionamento pode ser dinâmico ou fixo, no particionamento dinâmico, cada processo submetido à execução recebe o tamanho necessário para se comportar por completo na memória. Assim, a memória principal é subdividida em segmentos de tamanho variado. No particionamento fixo, a memória é subdividida em
+blocos de tamanho fixo (iguais ou não) chamados em páginas, blocos ou frames.
+
+
+frag ext - acontece quando existe espaço de memoria, livre, o suficiente para satisfazer uma requisição, porém não é contínuo e por isso não pode ser utilizado. Este tipo de fragmentação começa a acontecer quando os programas forem terminando e deixando espaços cada vez menores na memória, não permitindo o ingresso de novos programas
+
+algoritimos de alocação: 
+3 maneiras para alocar uma area livre para um processo
+ tenho um processo de 14kb, que quer entrar na mem principal
+  ele melhor se encaixaria no local de 16kb
+  o pior seria ele encaixar no 32, sobraria 18kb
+  primeira escolha o processo se alocaria no primeiro espaço que coubesse, vc procura um espaço e o processo é alocado no primeiro que couber
+
+
+swapping, transferencia de dados/paginas/partições entre e mem prin, e a mem seg, como tudo não cabe na mem prin, vc deixa algumas partes não essenciais numa area de
+swap, sendo uma troca, swap in para colocar na mem principal e swap out pra tirar da mem prin e colocar

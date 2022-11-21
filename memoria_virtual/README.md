@@ -26,6 +26,7 @@ paginação como segmentação podem ser estendidas no sentido de prover memóri
 Cada entrada da tabela de segmentos possui a base e o limite de cada segmento. A base contém o endereço físico de início do segmento e o limite especifica o seu tamanho. Os segmentos podem se tornar muito grandes e, às vezes, pode ser impossível manter todos na memória ao mesmo tempo.
 
 
-	Quais os benefícios oferecidos pela técnica de memória virtual? Como este conceito permite que um programa e seus dados ultrapassem os limites da memória principal?
+	Quais os benefícios oferecidos pela técnica de memória virtual?:
+Como este conceito permite que um programa e seus dados ultrapassem os limites da memória principal?
 Os principais benefícios da técnica de memória virtual são possibilitar que programas e dados sejam armazenados independentemente do tamanho da memória principal, permitir um número maior de processos compartilhando a memória principal e minimizar o problema da fragmentação. O que possibilita que um programa e seus dados ultrapassem os limites da memória principal é a técnica de gerência de memória virtual que combina as memórias principal e
 secundária, estendendo o espaço de endereçamento dos processos.

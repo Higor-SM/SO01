@@ -30,3 +30,17 @@ Cada entrada da tabela de segmentos possui a base e o limite de cada segmento. A
 Como este conceito permite que um programa e seus dados ultrapassem os limites da memória principal?
 Os principais benefícios da técnica de memória virtual são possibilitar que programas e dados sejam armazenados independentemente do tamanho da memória principal, permitir um número maior de processos compartilhando a memória principal e minimizar o problema da fragmentação. O que possibilita que um programa e seus dados ultrapassem os limites da memória principal é a técnica de gerência de memória virtual que combina as memórias principal e
 secundária, estendendo o espaço de endereçamento dos processos.
+
+
+
+
+
+
+
+na paginação a gente quebra o tamanho do processo em páginas, cada página contém espaço de endereçamento do processo,
+então o processo é dividido em partes iguais
+na páginação temos as páginas(que ficam no disco) e frames(que seriam a memória principal)
+existe o page fault, que seria um evento que ocorre quando uma página existe na parte virtual, mas não é carregada na memória principal, mesmo sendo referenciada
+evento que ocorre um acesso de página que não está na memória RAM foi acessada/lida/escrita
+com isso, acontece a necessidade de fazer um mapeamento entre uma página virtual e uma página física e quem vai ser responsável por isso, seria a tabela de páginas
+quebro páginas de tamanho iguais na mem secundária assim como na mem prim e façoi um mapeamento utilizando a tabela de páginas

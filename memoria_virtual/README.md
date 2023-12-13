@@ -1,46 +1,132 @@
-	O que é memória virtual?:
-Memória virtual consiste na utilização de armazenamento externo como
-extensão da memória RAM. Por exemplo, a memória principal (RAM), não
-possui espaços disponíveis para armazenar determinada solicitação de um processo. A partir de algum algoritmo (por exemplo, o de retirar os dados mais
-antigos armazenados) é selecionado um grupo de dados que serão salvos fora
-da memória RAM (por exemplo, no disco rígido), liberando assim o espaço
-necessário para armazenar a quantidade solicitada pelo processo. Esta técnica, denominada swapping (troca de processo), e implementada de forma eficiente e transparente para os processos e para os usuários. Vale a pena ressaltar que os atuais sistemas operacionais irão utilizar memória virtual paginada, retirando páginas da memória principal para um armazenamento externo, permitindo mais quadros disponíveis na memória RAM. Combinação entre a memória principal e a memória secundária (disco) para dar ao usuário a ilusão de existir uma memória principal bem maior que na realidade.
+<h1 align="center">🔸Memória Virtual🔸</h1>
+<br id="topo">
 
-	Espaço de Endereçamento Virtual:
-Um programa no ambiente de memória virtual não faz referência a endereços físicos de memória (endereços reais), mas apenas a endereços virtuais (imaginários). Durante a execução, o endereço virtual é mapeado para o endereço físico real da memória principal, ou seja, "mapeamento". O conjunto de endereços virtuais que os processos podem endereçar é chamado de "espaço de endereçamento virtual", e o conjunto de endereços reais é chamado "espaço de endereçamento real".
+## Conceito
 
-	Mapeamento: 
-O processador, ele apenas executa instruções e referência dados residentes no espaço de endereçamento real; portanto, deve existir um mecanismo que transforme os endereços virtuais em reais. Esse mecanismo é chamado mapeamento. Nos sistemas atuais, o mapeamento é realizado por hardware juntamente com o Sistema Operacional. O dispositivo de hardware responsável por esta tradução é conhecido como Unidade de Gerenciamento de Memória (Memory Management Unit – MMU), sendo acionado sempre que se faz referência um endereço virtual. Depois de traduzido, o endereço real pode ser utilizado pelo processador para acesso à memória principal. 
+<p align="justify">Dentro do ambiente de multiprogramação existe uma enorme quantidade de processos e quando todos esses processos não cabem na memória principal, esta precisa se valer de técnicas de processamento. Ou seja, para que a memória principal consiga dar conta de todos esses processos, existe a técnica da memória virtual, que garante maior eficiência a esses processos e ao funcionamento do computador como um todo.<br>
+<br>
+Essa técnica usa a memória secundária como uma “cache” para partes dos processos que não cabem na memória principal, permitindo que todos os processos possam utilizar a memória principal. Quem cria e gerencia essa memória virtual é o SO.<br>
+<br>
+Só são transportadas para a memória virtual as partes da memória principal que estão de fato sendo usadas pelos processos. Ou seja, temos duas vantagens principais:<br></p>
 
-	Endereçamento: 
-O processador tenta sempre executar um endereço virtual. Este endereço virtual contém duas partes: um número da página e um deslocamento dentro da página. O número da página serve para o processador consultar a tabela de páginas para saber qual a página real (endereço do frame) que a instrução desejada está. Então o endereço real definitivo é obtido concatenando o número da página real (endereço do frame) com o deslocamento. O conceito de memória virtual se aproxima muito da ideia de um vetor existente nas linguagens de alto nível. Quando um programa faz referência a um elemento do vetor, não há preocupação em saber a posição de memória daquele dado. 
+- Um processo pode executar sem ter todas as instruções e dados dentro da memória principal;
+- O espaço de memória disponível ao programa pode exceder o tamanho da memória principal.
 
- 
-	Paginação por Demanda:
-Um programa não precisa estar completamente na memória para ser executado. Muitas partes de um programa nem sempre são necessárias a todo momento. Por exemplo, editores de texto oferecem aos usuários funções que são raramente utilizadas. Se cada programa ocupar, a cada momento, somente a memória física que realmente necessita, haverá uma substancial economia de espaço na memória principal. A técnica conhecida como memória virtual permite a execução de programas que não são completamente carregados para a memória física. Tanto
-paginação como segmentação podem ser estendidas no sentido de prover memória virtual. A paginação por demanda está baseada no mecanismo de paginação simples. Cada processo possui uma memória lógica, contígua. Essa memória lógica é dividida em páginas lógicas de mesmo tamanho. A memória física é dividida em páginas físicas, do mesmo tamanho das páginas lógicas. Cada página lógica é carregada em uma página física e uma tabela de páginas é construída. Na paginação por demanda, apenas as páginas efetivamente acessadas pelo processo serão carregadas para a memória física. Um bit válido/inválido na tabela de páginas é usado para indicar quais páginas lógicas foram carregadas. Dessa forma, na paginação por demanda, uma página marcada como inválida na tabela de páginas pode significar que ela realmente está fora do espaço lógico do processo ou pode significar apenas que essa página ainda não foi carregada para a memória física. A situação exata pode ser determinada através de uma consulta ao descritor do processo em questão. Quando a página lógica acessada pelo processo está marcada como válida na tabela de páginas, o endereço lógico é transformado em endereço físico, e o acesso transcorre normalmente. Quando a página lógica acessada pelo processo está marcada como inválida, a unidade de gerência de memória (MMU - Memory Management Unit) gera uma interrupção de proteção e aciona o sistema operacional. Cabe ao sistema operacional consultar o descritor do processo em questão. Caso a página acessada esteja fora do espaço de endereçamento do processo, o processo é abortado. Caso a página faça parte da memória lógica, mas esteja marcada como inválida apenas porque ainda não foi carregada para a memória, é dito que ocorreu uma interrupção por falta de página (page fault).
+<p align="justify">Também utiliza o MMU (circuito dentro do processador) para conversão dos endereços lógicos em endereços físicos, considerando que um processo usa endereços virtuais e não físicos.<br>
+<br></p>
 
-	Segmentação:
-É a técnica de gerência de memória onde o espaço de endereçamento virtual
-é dividido em blocos de tamanhos diferentes chamados segmentos. Nesta técnica um programa é dividido logicamente em sub-rotinas e estruturas de dados, que são alocados em segmentos na memória principal. Enquanto na técnica de paginação o programa é dividido em páginas de tamanho fixo, sem qualquer ligação com sua estrutura, na segmentação existe uma relação entre a lógica do programa e sua alocação na memória principal. Normalmente, a definição dos segmentos é realizada pelo compilador, a partir do código fonte do programa, e cada segmento pode representar um procedimento, uma função, vetor ou pilha. Na segmentação, os endereços especificam o número do segmento e o deslocamento dentro dele. Assim, para mapear um endereço virtual composto pelo par <segmento, deslocamento> o hardware de segmentação considera a existência de uma tabela de segmentos.
-Cada entrada da tabela de segmentos possui a base e o limite de cada segmento. A base contém o endereço físico de início do segmento e o limite especifica o seu tamanho. Os segmentos podem se tornar muito grandes e, às vezes, pode ser impossível manter todos na memória ao mesmo tempo.
+<div align="center">
+  <img src="Imagens/MMU.jpg" alt="esquema visual do funcionamento do MMU dentro do computador" width="80%" height="80%">
+</div>
 
+ <p align="center"> Funcionamento do MMU (IFRN).</p>
+  <br>
+  
+→ [Voltar ao topo](#topo)
 
-	Quais os benefícios oferecidos pela técnica de memória virtual?:
-Como este conceito permite que um programa e seus dados ultrapassem os limites da memória principal?
-Os principais benefícios da técnica de memória virtual são possibilitar que programas e dados sejam armazenados independentemente do tamanho da memória principal, permitir um número maior de processos compartilhando a memória principal e minimizar o problema da fragmentação. O que possibilita que um programa e seus dados ultrapassem os limites da memória principal é a técnica de gerência de memória virtual que combina as memórias principal e
-secundária, estendendo o espaço de endereçamento dos processos.
+## Técnicas
 
+<p align="justify"><b>PAGINAÇÃO:</b><br>
+<br>
+Consiste em quebrar os processos em páginas de tamanho fixo (p. ex. 4KB). Cada página contém partes do processo (do espaço de endereçamento do processo). Com isso, o espaço de endereçamento virtual é dividido em páginas virtuais.<br>
+<br>
+Obs.: Na paginação é possível misturar os tipos de informações, p. ex., códigos com textos, ou dados com pilhas etc.<br>
+<br>
+Dentro da paginação, existem as páginas (do lado do disco) e os frames (do lado da RAM). As páginas são as unidades de tamanho fixo no dispositivo secundário, ao passo que os frames consistem nas unidades correspondentes na memória física (RAM).<br>
+<br>
+Paginação sob demanda: as páginas serão criadas quando o sistema solicitar.<br>
+<br>
+Obs.: Page Fault => falta de página. Quando uma página não está na RAM é referenciada. Usa uma trap para carregar ou substituir uma página. (TRAP é o nome dado ao sinal de interrupção de software dado a CPU para que ela interrompa a execução de um processo para executar outro. O processo interrompido tem seus dados armazenados na memória para que seja executado posteriormente.)<br>
+<br>
+Obs. 2: Tabela de páginas => estrutura para mapear uma página ao frame correspondente. Cada processo tem uma. É uma espécie de índice de processos e também ocupa um espaço na memória.<br>
+<br>
+A busca do endereço pode ser sequencial ou binária, mas qualquer uma delas ainda é lenta, uma vez que ocorre um overhead (sobrecarga) do gerenciador de memória. O SO fica sobrecarregado em virtude das rotinas de gerenciamento dele próprio.<br>
+<br>
+Para encontrar o endereço físico, será essencial encontrar as seguintes informações:<br>
+<br>
+P = número da página<br>
+<br>
+D = deslocamento da página<br>
+<br>Com esses dois valores teremos o chamado offset e conseguiremos definir o endereço de memória físico.<br>
+<br></p>
 
+<p align="justify"><b>EXEMPLO DE PAGINAÇÃO:</b><br>
+<br>
+Quando um programa executa a instrução mov REG, 20500, por exemplo, significa que ele deseja copiar o conteúdo do endereço de memória 20500 para o registrador REG.<br>
+<br>
+Partindo do esquema a seguir, cálculo do deslocamento será feito da seguinte forma:<br>
+<br></p>
 
+<div align="center">
+  <img src="Imagens/enderecamentos.jpg" alt="ilustração da forma como são referenciados os endereços virtuais nos endereços físicos" width="80%" height="80%">
+</div>
 
+ <p align="center"> Referenciamento de páginas e frames (IFRN).</p>
+  <br>
 
+Deslocamento = Endereço virtual - Endereço virtual do 1º byte da página <br>
+Deslocamento = 20500 - 20480 = 20<br>
+<br>
+Obs.: No esquema, o endereço virtual está contido no espaço 20K-24K, logo, o primeiro byte dessa página será 20480 (convertendo 20Kb em bytes).<br>
+<br>
+Endereço físico = Endereço do 1º byte do frame + deslocamento<br>
+Endereço físico = 12288 + 20 = 12308<br>
+<br>
+Obs.: A página em questão está sendo referenciada no frame 3 (12K-16K), então, convertendo 12Kb em bytes teremos 12288 bytes.<br>
 
+As tabelas podem ser armazenadas:<br></p>
 
-na paginação a gente quebra o tamanho do processo em páginas, cada página contém espaço de endereçamento do processo,
-então o processo é dividido em partes iguais
-na páginação temos as páginas(que ficam no disco) e frames(que seriam a memória principal)
-existe o page fault, que seria um evento que ocorre quando uma página existe na parte virtual, mas não é carregada na memória principal, mesmo sendo referenciada
-evento que ocorre um acesso de página que não está na memória RAM foi acessada/lida/escrita
-com isso, acontece a necessidade de fazer um mapeamento entre uma página virtual e uma página física e quem vai ser responsável por isso, seria a tabela de páginas
-quebro páginas de tamanho iguais na mem secundária assim como na mem prim e façoi um mapeamento utilizando a tabela de páginas
+- Em um array de registradores, se a memória for pequena (são mantidas no hardware);
+- Na própria RAM, gerenciada pelo MMU, que utiliza 1 ou 2 registradores;
+- Em uma memória cache no MMU (memória associativa), usada para melhorar o desempenho da tabela na RAM.
+
+<p align="justify">Se um processo que não está na memória física (mas na MV) precisa ser utilizado e a memória física não tem mais espaço, o SO precisa usar algum algoritmo de substituição, p. ex.:<br></p>
+
+a)	FIFO = o primeiro a entrar é o primeiro a sair (fila);<br>
+<br>
+b)	LRU = exclui a página que não é referenciada há mais tempo (pilha);<br>
+<br>
+c)	Optimal = exclui a página que levará mais tempo para ser novamente necessária (pilha);<br>
+<br>
+d)	Clock-FINUFO = tem como base valores aproximados dos reais quanto ao último acesso à página (implementação simplificada da LRU);<br>
+<br>
+e)	Segunda chance = a página escolhida para sair é a que tem os bits de acesso e de modificação zerados.<br>
+
+→ [Voltar ao topo](#topo)
+
+<p align="justify"><b>SEGMENTAÇÃO:</b><br>
+<br>
+Consiste em blocos de tamanho arbitrário chamados de segmentos que contêm informações do mesmo tipo. Aqui, o espaço de endereçamento é quebrado em vários espaços (textos, códigos, dados etc.).<br>
+<br>
+Um programa é dividido logicamente em sub-rotinas e estruturas de dados, que são alocados em segmentos na memória principal. <br>
+<br></p>
+
+<div align="center">
+  <img src="Imagens/segmentacao.jpg" alt="ilustração da alocação de segmentos na memória principal" width="80%" height="80%">
+</div>
+
+ <p align="center"> Segmentação da memória (IFRN).</p>
+  <br>
+
+<p align="justify">A segmentação permite uma relação entre a lógica do programa e a sua divisão na memória. Além disso, é importante destacar que a definição dos segmentos é realizada pelo compilador e que o tamanho do segmento pode ser alterado durante a execução do programa.<br>
+<br>
+Obs.: O mecanismo de mapeamento é semelhante ao da paginação, neste caso, os segmentos são mapeados através de tabelas de segmentos. Cada processo possui sua própria tabela de segmentos.<br>
+<br>
+Vantagem: se a informação consistir em texto por exemplo, consigo dar um comando apenas de leitura, que afetará somente aquele segmento, sem influenciar nos demais.
+Muitos SOs misturam essas duas técnicas para ter as vantagens de todas elas.<br>
+<br>
+<b>IMPORTANTE:</b><br>
+<br>
+Paginação: invisível ao programador, serve para prover um espaço maior de endereçamento. Memória dividida em páginas de igual tamanho, com qualquer conteúdo.<br>
+<br>
+Segmentação: em geral visível ao programador, serve para organizar programas e dados, associando atributos de privilégio e proteção a instruções e dados. Os segmentos de um programa residem no disco. Apenas segmentos em uso são carregados na memória. O tamanho de um segmento não é fixo.<br></p>
+
+→ [Voltar ao topo](#topo)
+
+## Referências
+
+https://www.ime.usp.br/~song/mac344/slides07-virtual-memory.pdf <br>
+http://www.ic.uff.br/~boeres/slidesSOI/SOSI-aula5-memoriavirtual-completo.pdf <br>
+https://docente.ifrn.edu.br/tadeuferreira/disciplinas/2015.2/sistemas-operacionais/Aula16.pdf <br>
+https://www.to-convert.com/pt/informatica/converter-kilobyte-para-byte.php <br>
+MACHADO, Francis B; MAIA, Luiz P. Arquitetura de Sistemas Operacionais. 4. ed. Rio de Janeiro: LTC, 2007. 305 p. ISBN 978-85-216-1548-4.
